@@ -11,7 +11,7 @@ const UserInfo = (props) => {
       <div className="item">
         <p>
           <b>Описание: </b>
-          {person.description}
+          <p>{person.description}</p>
         </p>
       </div>
       <div className="item">

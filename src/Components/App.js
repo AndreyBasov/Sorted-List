@@ -11,6 +11,7 @@ const App = () => {
   let [chosen, setChosen] = useState(false);
 
   const onGetEntries = (e) => {
+    console.log(e.target);
     setChosen(true);
     var url = "";
     if (e.target.dataset.size === "small") {
@@ -44,6 +45,7 @@ const App = () => {
     } else {
       // string comparator
       newArray.sort((a, b) => {
+        console.log(a[field]);
         if (typeOfSort === "ascending") {
           return a[field].localeCompare(b[field]);
         }
@@ -54,8 +56,10 @@ const App = () => {
   };
 
   let [activePage, setActivePage] = useState(1);
-  const onPaginationChange = (e, paginationData) =>
+  const onPaginationChange = (e, paginationData) => {
+    console.log(paginationData.activePage);
     setActivePage(paginationData.activePage);
+  };
 
   let numOfPages = Math.ceil(data.length / 50);
 
@@ -63,6 +67,7 @@ const App = () => {
     let newArray = [...data];
     // add the new element to the array
     newArray.splice((activePage - 1) * 50, 0, newElement);
+    console.log(newArray);
     setData(newArray);
   };
 
