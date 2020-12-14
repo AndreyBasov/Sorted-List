@@ -1,4 +1,4 @@
-Link: https://andreybasov.github.io/sortedList/
+Link: https://andreybasov.github.io/Sorted-List/
 
 Для сборки: docker compose up 
 или npm install -> npm start
