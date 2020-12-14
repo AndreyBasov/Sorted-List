@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Table from "./Table";
 import CreateArea from "./CreateArea";
 import { Button, Pagination } from "semantic-ui-react";
+import { arr1, arr2 } from "../defaultInfo";
 
 const App = () => {
   // data stores the array of all objects
@@ -23,10 +24,23 @@ const App = () => {
     }
     // while loading we show the loading screen
     const get = async () => {
-      const response = await fetch(url);
-      var newData = await response.json();
-      setData(newData);
-      setLoading(false);
+      var newData;
+      try {
+        const response = await fetch(url);
+        newData = await response.json();
+        setData(newData);
+        setLoading(false);
+      } catch (err) {
+        setTimeout(() => {
+          if (e.target.dataset.size === "small") {
+            newData = arr1;
+          } else {
+            newData = arr2;
+          }
+          setData(newData);
+          setLoading(false);
+        }, 1500);
+      }
     };
     get();
   };
